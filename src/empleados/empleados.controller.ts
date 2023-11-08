@@ -4,12 +4,15 @@ import {ProductModel} from './empleadosModel';
 
 @Controller('empleados')
 export class EmpleadosController {
+    empleadosService: any;
     constructor(private readonly servicio: EmpleadosService) {}
-
-
 @Get()
 getEmpleado() {
     return this.servicio.getEmpleados();
+}
+@Get(':id')
+getEmpleadoPorId(@Param('id') id:number) {
+    return this.servicio.getEmpleadosPorId(id)
 }
 @Post()
 agregarEmpleado(@Body() modelo: ProductModel) {
