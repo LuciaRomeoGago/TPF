@@ -19,11 +19,11 @@ agregarEmpleado(@Body() modelo: ProductModel) {
     return this.servicio.agregarEmpleado(modelo);
 }
 @Put(':salario')
-modificarProducto(@Body() modelo: ProductModel, @Param('id') id: string){
-    return this.servicio.modificarSalario(id, modelo);
+modificarProducto(@Body() salario: number, @Param('id') id: number){
+    return this.servicio.modificarSalario(id, salario);
 }
 @Delete(':id')
-eliminarEmpleado(@Param('id') id: string) {
+eliminarEmpleado(@Param('id') id: number) {
     return this.servicio.eliminarEmpleado(id);
 }
 }

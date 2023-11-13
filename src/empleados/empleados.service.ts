@@ -30,12 +30,12 @@ getEmpleados(){
     }
 
 getEmpleadosPorId (id:number){
-    let IdEmpleado = [];
-    for(let i = 0;i>this.empleados.length;i++) {
+    for(let i = 0;i<this.empleados.length;i++) {
         if(this.empleados[i].id == id){
-            IdEmpleado = this.empleados[i]
+
+            return this.empleados[i]
         }
-    } return IdEmpleado
+    } 
 }
 
  agregarEmpleado(modelo: ProductModel) {
@@ -48,19 +48,20 @@ getEmpleadosPorId (id:number){
 return "Se ha agregado un nuevo empleado exitosamente";
     }
 
- modificarSalario (id:string, modelo: ProductModel) {
+ modificarSalario (id:number, salarioAumentado: number) {
         for( let i=0;i<this.empleados.length;i++) {
 if (this.empleados[i].id==id) {
-    this.empleados[i].salario=modelo.salario
+    salarioAumentado = this.empleados[i].salario
  return "El salario ha sido modificado correctamente"
      }
 }
        
     }
-eliminarEmpleado(id:string){
+eliminarEmpleado(id:number){
+    let listaDeEmpleados = []
     for(let i = 0;i >this.empleados.length;i++) {
-        if((parseInt(id)>0) && (parseInt(id)<this.empleados.length)){
-            this.empleados.splice(parseInt(id)-1,1)
+        if(this.empleados[i].id !== id){
+            listaDeEmpleados.push(this.empleados[i])
         } 
          } return this.empleados
        
