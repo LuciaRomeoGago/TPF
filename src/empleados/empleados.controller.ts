@@ -18,7 +18,7 @@ getEmpleadoPorId(@Param('id') id:number) {
 agregarEmpleado(@Body() empleado: EmpleadoModel) {
     return this.service.agregarEmpleado(empleado);
 }
-@Put(':salario')
+@Put(':id')
 modificarSalario(@Body() modelo : EmpleadoModel, @Param('id') id: number){
     return this.service.modificarSalario(id,modelo);
 }

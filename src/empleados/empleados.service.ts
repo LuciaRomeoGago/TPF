@@ -8,25 +8,25 @@ export class EmpleadosService {
     let empleado={
         id:1,
         nombre:"Juan",
-        salario: 22
+        salario: '22'
     }
     this.empleados.push(empleado);
     empleado={
         id:2,
         nombre:"Franco",
-        salario:23
+        salario:'23'
     }
     this.empleados.push(empleado);
     empleado={
         id:3,
         nombre:"Mateo",
-        salario:24
+        salario:'24'
     }
     this.empleados.push(empleado)
     }
 
 getEmpleados(){
-        return this.empleados
+        return this.empleados;
     }
 
     getEmpleadoPorId(id: number) {
