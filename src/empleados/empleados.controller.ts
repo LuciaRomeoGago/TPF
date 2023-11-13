@@ -8,18 +8,18 @@ export class EmpleadosController {
     constructor(private readonly servicio: EmpleadosService) {}
 @Get()
 getEmpleado() {
-    return this.servicio.getEmpleados();
+    return this.servicio.getEmpleado();
 }
 @Get(':id')
 getEmpleadoPorId(@Param('id') id:number) {
-    return this.servicio.getEmpleadosPorId(id)
+    return this.servicio.getEmpleadoPorId(id)
 }
 @Post()
 agregarEmpleado(@Body() modelo: ProductModel) {
     return this.servicio.agregarEmpleado(modelo);
 }
 @Put(':salario')
-modificarProducto(@Body() salario: number, @Param('id') id: number){
+modificarSalario(@Body() salario: number, @Param('id') id: number){
     return this.servicio.modificarSalario(id, salario);
 }
 @Delete(':id')

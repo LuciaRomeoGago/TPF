@@ -25,11 +25,11 @@ export class EmpleadosService {
     this.empleados.push(ind)
     }
 
-getEmpleados(){
+getEmpleado(){
         return this.empleados
     }
 
-getEmpleadosPorId (id:number){
+getEmpleadoPorId (id:number){
     for(let i = 0;i<this.empleados.length;i++) {
         if(this.empleados[i].id == id){
 
