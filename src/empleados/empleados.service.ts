@@ -1,72 +1,72 @@
 import { Injectable } from '@nestjs/common';
-import { ProductModel } from './empleadosModel';
+import { EmpleadoModel } from './empleadosModel';
 
 @Injectable()
 export class EmpleadosService {
     empleados=[];
     constructor(){
-    let ind={
-        "id":1,
-        "nombre":"Juan",
-        "salario": 22
+    let empleado={
+        id:1,
+        nombre:"Juan",
+        salario: 22
     }
-    this.empleados.push(ind);
-    ind={
-        "id":2,
-        "nombre":"Franco",
-        "salario":23
+    this.empleados.push(empleado);
+    empleado={
+        id:2,
+        nombre:"Franco",
+        salario:23
     }
-    this.empleados.push(ind);
-    ind={
-        "id":3,
-        "nombre":"Mateo",
-        "salario":24
+    this.empleados.push(empleado);
+    empleado={
+        id:3,
+        nombre:"Mateo",
+        salario:24
     }
-    this.empleados.push(ind)
+    this.empleados.push(empleado)
     }
 
-getEmpleado(){
+getEmpleados(){
         return this.empleados
     }
 
-getEmpleadoPorId (id:number){
-    for(let i = 0;i<this.empleados.length;i++) {
-        if(this.empleados[i].id == id){
-
-            return this.empleados[i]
+    getEmpleadoPorId(id: number) {
+        for (let empleado of this.empleados) {
+          if (empleado.id == id) {
+            return empleado;
+          }
         }
-    } 
-}
+        return 'Empleado no encontrado.';
+      }
 
- agregarEmpleado(modelo: ProductModel) {
+ agregarEmpleado(empleadomodel: EmpleadoModel) {
         let ind ={
-            "id":modelo.id,
-            "nombre": modelo.nombre,
-            "salario": modelo.salario
+            id:empleadomodel.id,
+            nombre: empleadomodel.nombre,
+            salario: empleadomodel.salario
         } 
         this.empleados.push(ind);
 return "Se ha agregado un nuevo empleado exitosamente";
     }
 
- modificarSalario (id:number, salarioAumentado: number) {
-        for( let i=0;i<this.empleados.length;i++) {
-if (this.empleados[i].id==id) {
-    salarioAumentado = this.empleados[i].salario
- return "El salario ha sido modificado correctamente"
-     }
-}
-       
-    }
-eliminarEmpleado(id:number){
-    let listaDeEmpleados = []
-    for(let i = 0;i >this.empleados.length;i++) {
-        if(this.empleados[i].id !== id){
-            listaDeEmpleados.push(this.empleados[i])
-        } 
-         } return this.empleados
-       
-        }
-
+ modificarSalario (id:number, modelo: EmpleadoModel) {
    
+        for( let i=0;i< this.empleados.length;i++) {
+            if (this.empleados[i].id == id) {
+                this.empleados[i].salario = modelo.salario;
+                return 'El salario fue modificado';
+              }
+            }
+            return 'El empleado no existe';
+          }
+
+       
+eliminarEmpleado(id){
+    let listaDeEmpleados = this.empleados.findIndex((e) => e.id == id);
+        if(listaDeEmpleados !== -1){
+           this.empleados.splice(listaDeEmpleados, 1);
+     return this.empleados;
+        } else {
+            return "El empleado no existe";
+        }
     
-    }
+}}
