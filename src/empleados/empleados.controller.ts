@@ -5,25 +5,25 @@ import {ProductModel} from './empleadosModel';
 @Controller('empleados')
 export class EmpleadosController {
     empleadosService: any;
-    constructor(private readonly servicio: EmpleadosService) {}
+    constructor(private readonly empleados: EmpleadosService) {}
 @Get()
 getEmpleado() {
-    return this.servicio.getEmpleado();
+    return this.empleados.getEmpleado();
 }
 @Get(':id')
 getEmpleadoPorId(@Param('id') id:number) {
-    return this.servicio.getEmpleadoPorId(id)
+    return this.empleados.getEmpleadoPorId(id)
 }
 @Post()
 agregarEmpleado(@Body() modelo: ProductModel) {
-    return this.servicio.agregarEmpleado(modelo);
+    return this.empleados.agregarEmpleado(modelo);
 }
 @Put(':salario')
 modificarSalario(@Body() salario: number, @Param('id') id: number){
-    return this.servicio.modificarSalario(id, salario);
+    return this.empleados.modificarSalario(id, salario);
 }
 @Delete(':id')
 eliminarEmpleado(@Param('id') id: number) {
-    return this.servicio.eliminarEmpleado(id);
+    return this.empleados.eliminarEmpleado(id);
 }
 }
